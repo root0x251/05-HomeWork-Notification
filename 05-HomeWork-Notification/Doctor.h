@@ -13,5 +13,7 @@
 @property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) CGFloat salary;
 @property (assign, nonatomic) CGFloat averagePrice;
+@property (assign, nonatomic) NSInteger sacrifice;    // жертвоприношение в телятах
+
 
 @end

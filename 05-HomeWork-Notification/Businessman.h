@@ -13,5 +13,7 @@
 @property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) CGFloat taxLevel;
 @property (assign, nonatomic) CGFloat salary;
+@property (assign, nonatomic) CGFloat sacrifice;    // жертвоприношение (для задания Умничка) выполняют все классы
+
 
 @end

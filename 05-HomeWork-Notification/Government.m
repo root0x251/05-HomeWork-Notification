@@ -12,11 +12,14 @@ NSString *const GovernmentTaxLevelDidChangeNotification = @"GovernmentTaxLevelDi
 NSString *const GovernmentSalsryDidChangeNotification = @"GovernmentSalsryDidChangeNotification";
 NSString *const GovernmentPensionDidChangeNotification = @"GovernmentPensionDidChangeNotification";
 NSString *const GovernmentAveragePriceDidChangeNotification = @"GovernmentAveragePriceDidChangeNotification";
+NSString *const GovernmentSacrificeDidChangeNotification = @"GovernmentsacrificeDidChangeNotification";
+
 
 NSString *const GovernmentTaxLevelUserKey = @"GovernmentTaxLevelDidChangeUserKey";
 NSString *const GovernmentSalaryUserKey = @"GovernmentSalaryDidChangeUserKey";
 NSString *const GovernmentPensionUserKey = @"GovernmentPensionDidChangeUserKey";
 NSString *const GovernmentAveragePriceUserKey = @"GovernmentAveragePriceDidChangeUserKey";
+NSString *const GovernmentSacrificeUserKey = @"GovernmentSacrificeUserKey";  // жертвоприношение
 
 
 @implementation Government
@@ -29,6 +32,8 @@ NSString *const GovernmentAveragePriceUserKey = @"GovernmentAveragePriceDidChang
         self.salary = 0;
         self.pension = 0;
         self.averagePrice = 0;
+        self.sacrifice = 0;
+
     }
     return self;
 }
@@ -71,6 +76,15 @@ NSString *const GovernmentAveragePriceUserKey = @"GovernmentAveragePriceDidChang
                                                            forKey:GovernmentAveragePriceUserKey];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:GovernmentAveragePriceDidChangeNotification
+                                                        object:nil userInfo:dictionary];
+}
+
+- (void) setSacrifice:(NSInteger)sacrifice {
+    _sacrifice = sacrifice;
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:sacrifice]
+                                                           forKey:GovernmentSacrificeUserKey];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GovernmentSacrificeDidChangeNotification
                                                         object:nil userInfo:dictionary];
 }
 
