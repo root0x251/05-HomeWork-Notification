@@ -23,6 +23,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(governmentNotification:)
                                                  name:GovernmentTaxLevelDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationEnterBackground:)    // при сворачивании
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationEnterForeground:)    // при разворачивании
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
     
     self.government = [Government new];
     
@@ -64,10 +72,7 @@
     self.government.averagePrice = arc4random_uniform(15) + 10;
     self.government.sacrifice = arc4random_uniform(50); // жертвоприношение в телятах
 
-//    Мастер.
-//    
-//    Подпишите классы на нотификацию ухода приложения в бекграунд, чтобы когда нажимается кнопка HOME и приложение сворачивается, каждый объект заявлял о том что он идет спать
-//    Тоже самое сделать для случая, когда приложение возвращается из свернутого состояния
+
 //    Супермен
 //    
 //    Создайте свой класс аналог апп делегату, только он не делегат приложения, но слушатель тех же самых нотификаций, какие методы есть у делегата. Грубо говоря у вашего класса должны быть теже методы, что и у апп делегата, но вызываться они должны путем нотификаций
@@ -81,6 +86,13 @@
     
     
     return YES;
+}
+- (void) applicationEnterBackground: (NSNotification *) notification {
+    NSLog(@"houdiHo");
+}
+
+- (void) applicationEnterForeground: (NSNotification *) notification {
+    NSLog(@"hayuHai");
 }
 
 - (void) governmentNotification: (NSNotification *) notification {
@@ -106,7 +118,7 @@
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+
 }
 
 
